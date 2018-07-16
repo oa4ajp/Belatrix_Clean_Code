@@ -3,14 +3,14 @@ using System.Linq;
 
 namespace CleanCode.PoorMethodSignatures
 {
-    public class PoorMethodSignatures
+    public class UserManager
     {
         public void Run()
         {
             var userService = new UserService();
 
-            var user = userService.GetUser("username", "password", true);
-            var anotherUser = userService.GetUser("username", null, false);
+            var user = userService.ValidateUser("username", "password");
+            var anotherUser = userService.GetUserByUserName("username");
         }
     }
 
@@ -18,21 +18,18 @@ namespace CleanCode.PoorMethodSignatures
     {
         private UserDbContext _dbContext = new UserDbContext();
 
-        public User GetUser(string username, string password, bool login)
-        {
-            return login ? Metodo1(username, password) : Metodo2(username);
+        public User GetUserByUserName(string userName) {
+            return _dbContext.Users.SingleOrDefault(u => u.Username == userName);
         }
 
-        private User Metodo2(string username)
+        public User ValidateUser(string userName, string password)
         {
-            return _dbContext.Users.SingleOrDefault(u => u.Username == username);
-        }
-
-        private User Metodo1(string username, string password)
-        {
-            var user = _dbContext.Users.SingleOrDefault(u => u.Username == username && u.Password == password);
+            var user = _dbContext.Users.SingleOrDefault(u => u.Username == userName && u.Password == password);
             if (user != null)
+            {
                 user.LastLogin = DateTime.Now;
+            }
+                
             return user;
         }
     }
