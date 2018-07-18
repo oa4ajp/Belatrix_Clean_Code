@@ -6,13 +6,13 @@ namespace CleanCode.MagicNumbers
         const string rejected = "1";
         const string expired = "2";
 
-        public void ApproveDocument(int status)
+        public void ApproveDocument(Status status)
         {
-            if (status == (int) Status.Approve)
+            if (status ==  Status.Approve)
             {
                 // ...
             }
-            else if (status == (int) Status.Denied)
+            else if (status ==  Status.Denied)
             {
                 // ...
             }
