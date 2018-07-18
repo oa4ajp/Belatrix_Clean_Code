@@ -21,5 +21,8 @@ namespace CleanCode.OutputParameters
             totalCount = 100;
             return new List<Customer>();
         }
+
+        //Create a Class To retunr the two values
+
     }
 }

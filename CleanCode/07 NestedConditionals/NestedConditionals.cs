@@ -9,46 +9,45 @@ namespace CleanCode.NestedConditionals
 
     public class Reservation
     {
-        public Reservation(Customer customer, DateTime dateTime)
+        public Reservation(Customer customer, DateTime startDate)
         {
-            From = dateTime;
+            FromDate = startDate;
             Customer = customer;
         }
 
-        public DateTime From { get; set; }
+        public DateTime FromDate { get; set; }
         public Customer Customer { get; set; }
-        public bool IsCanceled { get; set; }
+        public bool IsReservationCanceled { get; set; }
 
-        public void Cancel()
+        public void CancelReservation()
         {
-            // Gold customers can cancel up to 24 hours before
+            // If reservation already started throw exception
+            if (DateTime.Now > FromDate)
+            {
+                throw new InvalidOperationException("It's too late to cancel.");
+            }
+            ValidateCustomerLoyaltyPoints();
+            IsReservationCanceled = true;
+        }
+
+        public void ValidateTotalHours(int maxHours) {
+            if ((FromDate - DateTime.Now).TotalHours < maxHours)
+            {
+                throw new InvalidOperationException("It's too late to cancel.");
+            }
+        }
+
+        public void ValidateCustomerLoyaltyPoints()
+        {            
             if (Customer.LoyaltyPoints > 100)
             {
-                // If reservation already started throw exception
-                if (DateTime.Now > From)
-                {
-                    throw new InvalidOperationException("It's too late to cancel.");
-                }
-                if ((From - DateTime.Now).TotalHours < 24)
-                {
-                    throw new InvalidOperationException("It's too late to cancel.");
-                }
-                IsCanceled = true;
+                // Gold customers can cancel up to 24 hours before
+                ValidateTotalHours(24);
             }
             else
             {
-                // Regular customers can cancel up to 48 hours before
-
-                // If reservation already started throw exception
-                if (DateTime.Now > From)
-                {
-                    throw new InvalidOperationException("It's too late to cancel.");
-                }
-                if ((From - DateTime.Now).TotalHours < 48)
-                {
-                    throw new InvalidOperationException("It's too late to cancel.");
-                }
-                IsCanceled = true;
+                // Regular customers can cancel up to 48 hours before      
+                ValidateTotalHours(48);
             }
         }
 

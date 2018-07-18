@@ -15,7 +15,7 @@ namespace CleanCode.UnitTests
 
             reservation.Cancel();
 
-            Assert.IsTrue(reservation.IsCanceled);
+            Assert.IsTrue(reservation.IsReservationCanceled);
         }
 
         [TestMethod]
@@ -46,7 +46,7 @@ namespace CleanCode.UnitTests
 
             reservation.Cancel();
 
-            Assert.IsTrue(reservation.IsCanceled);
+            Assert.IsTrue(reservation.IsReservationCanceled);
         }
 
         [TestMethod]
