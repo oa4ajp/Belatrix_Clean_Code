@@ -1,4 +1,5 @@
 ﻿using SOLID._01_SingleResponsability;
+using SOLID._02_OpenClosed;
 using System;
 using Xunit;
 
@@ -10,8 +11,8 @@ namespace SOLIDPrinciples.Tests
         [Fact]
         public void Validar_Suma_Correcta()
         {
-            var sample = new Sample();
-            sample.Sumar(5 , 6);
+            var calcultor = new Calculator();
+            calcultor.Sum(5 , 6);            
         }
     }
 }

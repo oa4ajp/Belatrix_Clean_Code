@@ -7,10 +7,30 @@ namespace SOLIDPrinciples.Tests
     public class OpenClosedTests
     {
         [Fact]
-        public void Validate()
+        public void Validate_Permanent_Employee()
         {
-            var employee = new Employee(1, "Test", "Permanent");
-            employee.CalculateBonus(1000).Should().Be(100);
+            string employeeType = "Permanent";
+            var employee = new Employee(1, "Test", employeeType);
+            employee.SalaryType = GeEmployeeSalaryType(employee);
+            employee.GetBonus(1000).Should().Be(100);
         }
+
+        [Fact]
+        public void Validate_Temporal_Employee()
+        {
+            string employeeType = "Temporal";
+            var employee = new Employee(1, "Test", employeeType);
+            employee.SalaryType = GeEmployeeSalaryType(employee);
+            employee.GetBonus(1000).Should().Be(50);
+        }
+
+        private ISalary GeEmployeeSalaryType(Employee employee)
+        {
+            if (employee.EmployeeType == "Permanent")
+                return new PermanentEmployeeSalary();
+            else
+                return new TemporalEmployeeSalary();
+        }
+
     }
 }

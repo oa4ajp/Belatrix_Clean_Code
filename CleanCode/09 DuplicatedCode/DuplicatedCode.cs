@@ -1,33 +1,29 @@
 ﻿
+using CleanCode._09_DuplicatedCode;
 using System;
 
 namespace CleanCode.DuplicatedCode
 {
-    class DuplicatedCode
+    class Admission
     {
+        public AdmissionDateTime AdmissionDateTime { set; get; }
+
+        public Admission()
+        {
+            AdmissionDateTime = new AdmissionDateTime();
+        }
+
         public void AdmitGuest(string name, string admissionDateTime)
         {
             // Some logic 
             // ...
 
-            int time;
             int hours = 0;
             int minutes = 0;
-            if (!string.IsNullOrWhiteSpace(admissionDateTime))
-            {
-                if (int.TryParse(admissionDateTime.Replace(":", ""), out time))
-                {
-                    hours = time / 100;
-                    minutes = time % 100;
-                }
-                else
-                {
-                    throw new ArgumentException("admissionDateTime");
-                }
 
-            }
-            else
-                throw new ArgumentNullException("admissionDateTime");
+            var admDateTime = AdmissionDateTime.GetDateTime(admissionDateTime);
+            hours = admDateTime.Hours;
+            minutes = admDateTime.Minutes;
 
             // Some more logic 
             // ...
@@ -41,24 +37,12 @@ namespace CleanCode.DuplicatedCode
         {
             // Some logic 
             // ...
-
-            int time;
             int hours = 0;
             int minutes = 0;
-            if (!string.IsNullOrWhiteSpace(admissionDateTime))
-            {
-                if (int.TryParse(admissionDateTime.Replace(":", ""), out time))
-                {
-                    hours = time / 100;
-                    minutes = time % 100;
-                }
-                else
-                {
-                    throw new ArgumentException("admissionDateTime");
-                }
-            }
-            else
-                throw new ArgumentNullException("admissionDateTime");
+
+            var admDateTime = AdmissionDateTime.GetDateTime(admissionDateTime);
+            hours = admDateTime.Hours;
+            minutes = admDateTime.Minutes;
 
             // Some more logic 
             // ...

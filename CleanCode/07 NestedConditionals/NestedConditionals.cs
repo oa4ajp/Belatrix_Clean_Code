@@ -9,15 +9,19 @@ namespace CleanCode.NestedConditionals
 
     public class Reservation
     {
+        public DateTime FromDate { get; set; }
+        public Customer Customer { get; set; }
+        public bool IsReservationCanceled { get; set; }
+
+        public int maxTotalHoursForGoldCustomer = 24;
+        public int maxTotalHoursForRegularCustomer = 48;
+        public int maxLoyaltyPoint = 100;
+
         public Reservation(Customer customer, DateTime startDate)
         {
             FromDate = startDate;
             Customer = customer;
         }
-
-        public DateTime FromDate { get; set; }
-        public Customer Customer { get; set; }
-        public bool IsReservationCanceled { get; set; }
 
         public void CancelReservation()
         {
@@ -39,17 +43,16 @@ namespace CleanCode.NestedConditionals
 
         public void ValidateCustomerLoyaltyPoints()
         {            
-            if (Customer.LoyaltyPoints > 100)
+            if (Customer.LoyaltyPoints > maxLoyaltyPoint)
             {
                 // Gold customers can cancel up to 24 hours before
-                ValidateTotalHours(24);
+                ValidateTotalHours(maxTotalHoursForGoldCustomer);
             }
             else
             {
                 // Regular customers can cancel up to 48 hours before      
-                ValidateTotalHours(48);
+                ValidateTotalHours(maxTotalHoursForRegularCustomer);
             }
         }
-
     }
 }

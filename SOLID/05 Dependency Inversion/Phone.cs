@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SOLID._05_Dependency_Inversion
 {
-    public class Phone
+    public class Phone : IWeatherAlert
     {
-        public String generateWeatherAlert(String weatherConditions)
+        public String GenerateWeatherAlert(String weatherConditions)
         {
             String alert = "It is " + weatherConditions;
             return alert;

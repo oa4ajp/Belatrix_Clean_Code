@@ -74,6 +74,7 @@
     <Compile Include="OpenClosedTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleResponsabilityTests.cs" />
+    <Compile Include="DependencyInversionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

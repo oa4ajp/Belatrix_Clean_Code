@@ -43,9 +43,13 @@
   <ItemGroup>
     <Compile Include="01 SingleResponsability\Sample.cs" />
     <Compile Include="02 OpenClosed\Employee.cs" />
+    <Compile Include="02 OpenClosed\ISalary.cs" />
+    <Compile Include="02 OpenClosed\PermanentEmployeeSalary.cs" />
+    <Compile Include="02 OpenClosed\TemporalEmployeeSalary.cs" />
     <Compile Include="03 Liskov substitution\LiskovSample.cs" />
     <Compile Include="04 Interface Segregation\IPrintTasks.cs" />
     <Compile Include="05 Dependency Inversion\Emailer.cs" />
+    <Compile Include="05 Dependency Inversion\IWeatherAlert.cs" />
     <Compile Include="05 Dependency Inversion\Phone.cs" />
     <Compile Include="05 Dependency Inversion\WeatherTracker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

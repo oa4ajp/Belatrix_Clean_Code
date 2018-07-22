@@ -13,7 +13,7 @@ namespace CleanCode.UnitTests
             var customer = CreateGoldCustomer();
             var reservation = new Reservation(customer, DateTime.Now.AddHours(25));
 
-            reservation.Cancel();
+            reservation.CancelReservation();
 
             Assert.IsTrue(reservation.IsReservationCanceled);
         }
@@ -25,7 +25,7 @@ namespace CleanCode.UnitTests
             var customer = CreateGoldCustomer();
             var reservation = new Reservation(customer, DateTime.Now.AddHours(23));
 
-            reservation.Cancel();
+            reservation.CancelReservation();
         }
 
         [TestMethod]
@@ -35,7 +35,7 @@ namespace CleanCode.UnitTests
             var customer = CreateGoldCustomer();
             var reservation = new Reservation(customer, DateTime.Now.AddDays(-1));
 
-            reservation.Cancel();
+            reservation.CancelReservation();
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace CleanCode.UnitTests
             var customer = CreateRegularCustomer();
             var reservation = new Reservation(customer, DateTime.Now.AddHours(49));
 
-            reservation.Cancel();
+            reservation.CancelReservation();
 
             Assert.IsTrue(reservation.IsReservationCanceled);
         }
@@ -56,7 +56,7 @@ namespace CleanCode.UnitTests
             var customer = CreateRegularCustomer();
             var reservation = new Reservation(customer, DateTime.Now.AddHours(47));
 
-            reservation.Cancel();
+            reservation.CancelReservation();
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace CleanCode.UnitTests
             var customer = CreateRegularCustomer();
             var reservation = new Reservation(customer, DateTime.Now.AddHours(-1));
 
-            reservation.Cancel();
+            reservation.CancelReservation();
         }
 
         private static Customer CreateGoldCustomer()

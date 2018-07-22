@@ -2,6 +2,12 @@
 {
     public class Employee
     {
+        public int ID { get; set; }
+        public string EmployeeType { get; set; }
+        public string Name { get; set; }
+
+        public ISalary SalaryType { get; set; }
+
         public Employee(int id, string name, string type)
         {
             this.ID = id;
@@ -9,16 +15,9 @@
             this.EmployeeType = type;
         }
 
-        public int ID { get; set; }
-        public string EmployeeType { get; set; }
-        public string Name { get; set; }
-
-        public decimal CalculateBonus(decimal salary)
-        {
-            if (this.EmployeeType == "Permanent")
-                return salary * .1M;
-            else
-                return salary * .05M;
+        public decimal GetBonus(decimal salary)
+        {        
+            return SalaryType.CalculateBonus(salary);                       
         }
     }
 }

@@ -49,8 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="08 SwitchStatements\Cost.cs" />
+    <Compile Include="08 SwitchStatements\IMonthlyStatement.cs" />
+    <Compile Include="08 SwitchStatements\PayAsYouGoMonthlyStatement.cs" />
+    <Compile Include="08 SwitchStatements\UnlimitedMonthlyStatement.cs" />
+    <Compile Include="09 DuplicatedCode\AdmissionDateTime.cs" />
+    <Compile Include="09 DuplicatedCode\DateTimeOutput.cs" />
     <Compile Include="10 Comments\Comments.cs" />
     <Compile Include="09 DuplicatedCode\DuplicatedCode.cs" />
+    <Compile Include="10 Comments\CustomerService.cs" />
+    <Compile Include="10 Comments\MailService.cs" />
+    <Compile Include="10 Comments\OrderService.cs" />
+    <Compile Include="11 LongMethods\CsvService.cs" />
     <Compile Include="12 FullRefactoring\Example1.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -63,11 +73,14 @@
     <Compile Include="07 NestedConditionals\NestedConditionals.cs" />
     <Compile Include="04 OutputParameters\OutputParameters.cs" />
     <Compile Include="02 PoorMethodSignatures\PoorMethodSignatures.cs" />
+    <Compile Include="12 FullRefactoring\PostRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="08 SwitchStatements\Customer.cs" />
-    <Compile Include="08 SwitchStatements\MonthlyStatement.cs" />
     <Compile Include="08 SwitchStatements\MonthlyUsage.cs" />
     <Compile Include="05 VariableDeclarationsAtTheTop\PayCalculator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="11 LongMethods\CsvDataService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
