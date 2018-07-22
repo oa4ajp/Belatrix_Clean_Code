@@ -50,9 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="08 SwitchStatements\Cost.cs" />
-    <Compile Include="08 SwitchStatements\IMonthlyStatement.cs" />
-    <Compile Include="08 SwitchStatements\PayAsYouGoMonthlyStatement.cs" />
-    <Compile Include="08 SwitchStatements\UnlimitedMonthlyStatement.cs" />
+    <Compile Include="08 SwitchStatements\IMonthlyStatementService.cs" />
+    <Compile Include="08 SwitchStatements\MonthlyStatement.cs" />
+    <Compile Include="08 SwitchStatements\PayAsYouGoMonthlyStatementService.cs" />
+    <Compile Include="08 SwitchStatements\UnlimitedMonthlyStatementService.cs" />
     <Compile Include="09 DuplicatedCode\AdmissionDateTime.cs" />
     <Compile Include="09 DuplicatedCode\DateTimeOutput.cs" />
     <Compile Include="10 Comments\Comments.cs" />

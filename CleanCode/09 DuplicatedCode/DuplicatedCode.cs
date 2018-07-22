@@ -1,5 +1,4 @@
-﻿
-using CleanCode._09_DuplicatedCode;
+﻿using CleanCode._09_DuplicatedCode;
 using System;
 
 namespace CleanCode.DuplicatedCode

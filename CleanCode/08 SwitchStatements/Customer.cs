@@ -1,5 +1,4 @@
-﻿
-namespace CleanCode.SwitchStatements
+﻿namespace CleanCode.SwitchStatements
 {
     public class Customer
     {

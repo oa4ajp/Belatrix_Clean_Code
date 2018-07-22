@@ -1,7 +1,5 @@
 ﻿using CleanCode._10_Comments;
-using System;
 using System.Collections.Generic;
-using System.Net.Mail;
 
 namespace CleanCode.Comments
 {

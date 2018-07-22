@@ -8,28 +8,16 @@ namespace SOLIDPrinciples.Tests
     {
         [Fact]
         public void Validate_Permanent_Employee()
-        {
-            string employeeType = "Permanent";
-            var employee = new Employee(1, "Test", employeeType);
-            employee.SalaryType = GeEmployeeSalaryType(employee);
-            employee.GetBonus(1000).Should().Be(100);
+        {            
+            var employee = EmployeeFactory.GetEmployee(EmployeeType.Permanent, 1, "Test");            
+            employee.CalculateBonus(1000).Should().Be(100);
         }
 
         [Fact]
-        public void Validate_Temporal_Employee()
+        public void Validate_Temporary_Employee()
         {
-            string employeeType = "Temporal";
-            var employee = new Employee(1, "Test", employeeType);
-            employee.SalaryType = GeEmployeeSalaryType(employee);
-            employee.GetBonus(1000).Should().Be(50);
-        }
-
-        private ISalary GeEmployeeSalaryType(Employee employee)
-        {
-            if (employee.EmployeeType == "Permanent")
-                return new PermanentEmployeeSalary();
-            else
-                return new TemporalEmployeeSalary();
+            var employee = EmployeeFactory.GetEmployee(EmployeeType.Temporary, 1, "Test");            
+            employee.CalculateBonus(1000).Should().Be(50);
         }
 
     }
