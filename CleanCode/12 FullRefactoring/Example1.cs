@@ -15,10 +15,12 @@ namespace Project.UserControls
         public int? PostId { get; set; }
 
         private readonly PostRepository _postRepository;
+        private readonly PostValidator _validator;
 
         public PostControl()
         {
             _postRepository = new PostRepository();
+            _validator = new PostValidator();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -35,15 +37,9 @@ namespace Project.UserControls
 
         private void ValidateForm()
         {
-            PostValidator validator = new PostValidator();
-            Post entity = new Post()
-            {
-                // Map form fields to entity properties
-                Id = Convert.ToInt32(PostId.Value),
-                Title = PostTitle.Text.Trim(),
-                Body = PostBody.Text.Trim()
-            };
-            var validationResults = validator.Validate(entity);
+            Post entity = GetPost();
+
+            var validationResults = _validator.Validate(entity);
 
             if (validationResults.IsValid)
             {
@@ -53,6 +49,18 @@ namespace Project.UserControls
             {
                 DisplayErrors(validationResults);
             }
+        }
+
+        private Post GetPost()
+        {
+            Post entity = new Post()
+            {
+                // Map form fields to entity properties
+                Id = Convert.ToInt32(PostId.Value),
+                Title = PostTitle.Text.Trim(),
+                Body = PostBody.Text.Trim()
+            };
+            return entity;
         }
 
         private void DisplayForm()
