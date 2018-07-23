@@ -14,36 +14,44 @@ namespace Project.UserControls
         public Label PostTitle { get; set; }
         public int? PostId { get; set; }
 
-        private PostRepository _postRepository;
+        private readonly PostRepository _postRepository;
 
-        protected void Page_Load(object sender, EventArgs e)
+        public PostControl()
         {
             _postRepository = new PostRepository();
+        }
 
+        protected void Page_Load(object sender, EventArgs e)
+        {            
             if (Page.IsPostBack)
             {
-                PostValidator validator = new PostValidator();
-                Post entity = new Post()
-                {
-                    // Map form fields to entity properties
-                    Id = Convert.ToInt32(PostId.Value),
-                    Title = PostTitle.Text.Trim(),
-                    Body = PostBody.Text.Trim()
-                };
-                var validationResults = validator.Validate(entity);
-
-                if (validationResults.IsValid)
-                {                    
-                    _postRepository.SavePost(entity);
-                }
-                else
-                {
-                    DisplayErrors(validationResults);
-                }
+                ValidateForm();
             }
             else
             {
                 DisplayForm();
+            }
+        }
+
+        private void ValidateForm()
+        {
+            PostValidator validator = new PostValidator();
+            Post entity = new Post()
+            {
+                // Map form fields to entity properties
+                Id = Convert.ToInt32(PostId.Value),
+                Title = PostTitle.Text.Trim(),
+                Body = PostBody.Text.Trim()
+            };
+            var validationResults = validator.Validate(entity);
+
+            if (validationResults.IsValid)
+            {
+                _postRepository.SavePost(entity);
+            }
+            else
+            {
+                DisplayErrors(validationResults);
             }
         }
 
