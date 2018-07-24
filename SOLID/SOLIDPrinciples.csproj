@@ -46,6 +46,7 @@
     <Compile Include="02 OpenClosed\EmployeeFactory.cs" />
     <Compile Include="02 OpenClosed\PermanentEmployee.cs" />
     <Compile Include="02 OpenClosed\TemporaryEmployee.cs" />
+    <Compile Include="03 Liskov substitution\IStandardEmployee.cs" />
     <Compile Include="03 Liskov substitution\LiskovSample.cs" />
     <Compile Include="04 Interface Segregation\IPrintTasks.cs" />
     <Compile Include="05 Dependency Inversion\Emailer.cs" />
